@@ -1,0 +1,33 @@
+%!PS
+
+/inch {72 mul} def
+
+
+newpath                 % Start a new path
+1 inch 1 inch moveto    % an inch in from the lower left
+2 inch 1 inch lineto    % bottom side
+2 inch 2 inch lineto    % right side
+1 inch 2 inch lineto    % top side
+closepath               % Automatically add left side to close path
+
+/myshade <<
+    /PatternType 2
+    /Shading
+    <<
+        /ShadingType 2
+        /ColorSpace [/DeviceRGB]
+        /Coords [280 -80 290 -80]
+        /Function
+        <<
+            /FunctionType 2
+            /Domain [0 1]
+            /N 1
+            /C0 [0 0 1]
+            /C1 [1 0 0]
+        >>
+    >>
+>> def
+
+myshade shfill
+
+showpage

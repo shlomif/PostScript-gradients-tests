@@ -1,0 +1,61 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 134 240 460 584
+
+% Przemyslaw Prusinkiewicz and Aristid Lindenmayer
+% The Algorithmic Beauty of Plants
+% Springer-Verlag, New York, 1990
+% p. 99-101
+
+% This program by Peter Kleiweg
+% http://www.let.rug.nl/~kleiweg/postscript/
+
+8 dict begin
+
+/angle
+  360
+  5 sqrt 1 add 2 div
+  dup mul div
+  def
+
+% COMPARE WITH ONE OF THESE:
+% /angle 137.3 def
+% /angle 137.5 def
+% /angle 137.6 def
+
+/iter 1000 def
+/c 5 def
+
+298 421 translate
+
+gsave
+  iter -1 0 {
+    angle rotate
+    0 0 moveto
+    dup sqrt c mul c lineto
+    c c neg rlineto
+    c neg dup rlineto
+    closepath
+    gsave
+      1 exch iter div 90 mul cos 0 setrgbcolor
+      fill
+    grestore
+    stroke
+  } for
+grestore
+
+/center {
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+} bind def
+
+/Times-Roman findfont 12 scalefont setfont
+0 iter sqrt c mul neg 20 sub moveto
+(\312) center
+angle 30 string cvs center
+(angle: ) center
+show show show
+
+end
+showpage
+
+%%EOF

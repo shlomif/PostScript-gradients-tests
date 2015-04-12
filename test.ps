@@ -1,0 +1,93 @@
+%!PS
+
+%% This mini-program shows the string Hello
+
+/Times-Roman findfont % Choose a font
+20 scalefont          % Define its font size
+setfont               % Set it as the active font
+newpath               % Start a new path
+/my_y_coord 200 200 add def  % my_y_coord <- 200+200
+72 my_y_coord moveto  % Move the pointer to (72,my_y_coord)
+(Hello) show          % Show the string hello
+
+%% This mini program draws a star with 36 horns
+
+0 10 360 {            % for(a=0;a<360;a+=10)  -- ENDS with for
+    newpath           % Start a new path
+    gsave             % Save the coordinates
+    144 144 moveto    % Move to the position (144,144) 
+    rotate            % Rotate by loop_var angles
+    72 0 rlineto      % Line to (72,0) (according to the rotated angles)
+    stroke            % Stroke it.
+    grestore          % Restore the coordinates
+} for                 % Execute the for loop
+
+
+%% This mini-program draws a 36-sided perfect polygon
+newpath
+gsave
+400 400 moveto        % Move to the center of the screen
+0 10 360 {
+    10 rotate         % Rotate the system by 10 degrees
+    10 0 rlineto      % Draw a 10-pixel long line
+} for
+stroke
+grestore
+
+% This snippet draws a matrix of S's
+0 1 9 {     % for
+    % Assign the value of the loop variable to the variable myx
+    /myx 1 index def
+    0 1 9 {    % for
+        % Ditto for myy
+        /myy 1 index def
+        newpath
+            % myxcoord = myx*10+200
+            /myxcoord myx 10 mul 200 add def
+            % myycoord = myy*10+200
+            /myycoord myy 10 mul 200 add def
+            myxcoord myycoord moveto
+            (S) show
+        stroke
+    } for
+} for
+
+/myshade
+<<
+    /PatternType 2
+
+    /ShadingType 2
+    /ColorSpace currentcolorspace
+    
+    /Function << 
+        0 { 
+            /myvar 1 index def
+            myvar 0.01 mul myvar 0.01 mul myvar 0.01 mul
+          } bind
+        1 {
+            0.5
+            
+          } bind
+    >>
+    /Coords [ 0.0 0.0 1.0 0.0 ]
+>> def
+
+
+%% Draws a one square inch box and inch in from the bottom left
+
+/inch {72 mul} def      % Convert inches->points (1/72 inch)
+
+newpath                 % Start a new path
+1 inch 1 inch moveto    % an inch in from the lower left
+2 inch 1 inch lineto    % bottom side
+2 inch 2 inch lineto    % right side
+1 inch 2 inch lineto    % top side
+closepath               % Automatically add left side to close path
+%0.5 setgray
+%0 1 0 setrgbcolor       % Set the color to green
+%fill                    % Fill in the box on the paper
+myshade shfill
+stroke
+
+showpage                % We're done... eject the page
+
