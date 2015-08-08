@@ -15,7 +15,7 @@ newpath               % Start a new path
 0 10 360 {            % for(a=0;a<360;a+=10)  -- ENDS with for
     newpath           % Start a new path
     gsave             % Save the coordinates
-    144 144 moveto    % Move to the position (144,144) 
+    144 144 moveto    % Move to the position (144,144)
     rotate            % Rotate by loop_var angles
     72 0 rlineto      % Line to (72,0) (according to the rotated angles)
     stroke            % Stroke it.
@@ -58,8 +58,8 @@ grestore
 
     /ShadingType 2
     /ColorSpace currentcolorspace
-    
-    /Function << 
+
+    /Function <<
     	/FunctionType 0
         /Domain [0 1]
         %/DataSource (ABCDEFGHIJKLMNOPQRSTUVWXYZ)

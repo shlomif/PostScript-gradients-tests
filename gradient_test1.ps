@@ -95,7 +95,7 @@ size scalefont setfont
 /f { closepath F } bd
 /S {
 pusht
-skstartmatrix setmatrix stroke 
+skstartmatrix setmatrix stroke
 popt
 } bd
 /s { closepath S } bd
@@ -119,20 +119,20 @@ x 2 index x l
 l
 closepath
 } bd
-/ellipse { 
+/ellipse {
 dup type /arraytype eq
 {
 pusht x concat
-0 0 1.0 C 
+0 0 1.0 C
 popt
-}	
+}
 {
 pusht 5 1 roll
 4 -1 roll concat
 newpath
 dup 2 eq {
-0 0 m 
-} if 
+0 0 m
+} if
 3 1 roll
 radgrad x
 radgrad x
@@ -228,7 +228,7 @@ false setstrokeadjust
 false setoverprint
 } if
 } if
-} bd 
+} bd
 /skepsend {
 count sk_count sub { pop } repeat
 countdictstack sk_dict_count sub { end } repeat
@@ -236,18 +236,18 @@ sk_state restore
 end
 } bd
 /gradidx 0 def
-/gradient { 
+/gradient {
 3 mul array
 /gradidx 0 def
 } bd
 /$ {
-3 index gradidx       5 -1 roll put 
-2 index gradidx 1 add 4 -1 roll put 
-1 index gradidx 2 add 3 -1 roll put 
+3 index gradidx       5 -1 roll put
+2 index gradidx 1 add 4 -1 roll put
+1 index gradidx 2 add 3 -1 roll put
 /gradidx gradidx 3 add def
 } bd
-/! { 
-3 
+/! {
+3
 {
 dup dup gradidx dup 3 1 roll 3 sub get put
 /gradidx gradidx 1 add def
@@ -289,7 +289,7 @@ bottom right top R f
 }
 for
 }
-if 
+if
 pop
 popt
 } bd
@@ -317,7 +317,7 @@ exch
 }
 for
 }
-if 
+if
 pop
 popt
 } bd
